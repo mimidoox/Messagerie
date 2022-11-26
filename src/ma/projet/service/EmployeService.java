@@ -91,7 +91,7 @@ public class EmployeService implements IDao<Employe>{
 	@Override
 	public List<Employe> getAll() {
 		// TODO Auto-generated method stub
-		List<Employe> employes = new ArrayList<Employe>(null);
+		List<Employe> employes = new ArrayList<Employe>();
 		try {
 			String req="select * from employe  ";
 			PreparedStatement ps=Connexion.getConnexion().prepareStatement(req);

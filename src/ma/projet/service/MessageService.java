@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ma.projet.beans.Employe;
+
 import ma.projet.beans.Message;
 import ma.projet.connexion.Connexion;
 import ma.projet.idao.IDao;
@@ -67,7 +67,7 @@ public class MessageService implements IDao<Message>{
 			ps.setInt(1, id);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
-				msg = new Message(rs.getInt("id"), rs.getString("object"), rs.getString("sujet"),rs.getDate("date"),es.getById(rs.getInt("empEmetteur")),es.getById(rs.getInt("empRecepteur")));
+				msg = new Message(rs.getInt("id"), rs.getString("objet"), rs.getString("sujet"),rs.getDate("date"),es.getById(rs.getInt("empEmetteur")),es.getById(rs.getInt("empRecepteur")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -79,13 +79,13 @@ public class MessageService implements IDao<Message>{
 	@Override
 	public List<Message> getAll() {
 		// TODO Auto-generated method stub
-		List<Message> messages = new ArrayList<Message>(null);
+		List<Message> messages = new ArrayList<Message>();
 		try {
 			String req="select * from message ";
 			PreparedStatement ps=Connexion.getConnexion().prepareStatement(req);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
-				messages.add(new Message(rs.getInt("id"), rs.getString("object"), rs.getString("sujet"),rs.getDate("date"),es.getById(rs.getInt("empEmetteur")),es.getById(rs.getInt("empRecepteur"))));
+				messages.add(new Message(rs.getInt("id"), rs.getString("objet"), rs.getString("sujet"),rs.getDate("date"),es.getById(rs.getInt("empEmetteur")),es.getById(rs.getInt("empRecepteur"))));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

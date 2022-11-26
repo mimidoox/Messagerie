@@ -13,7 +13,7 @@ public class Connexion {
 	
 	static {
 		try {
-			FileInputStream f = new FileInputStream("C:\\Users\\DELL\\Desktop\\Messagerie\\src\\base.properties");
+			FileInputStream f = new FileInputStream("base.properties");
 			Properties p = new Properties();
 			p.load(f);
 			String url=p.getProperty("jdbc.url");
